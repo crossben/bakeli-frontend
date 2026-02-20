@@ -58,8 +58,7 @@ export const useAuthStore = defineStore('auth', {
             this.user = null;
             this.token = null;
             this.isAuthenticated = false;
-            localStorage.removeItem('auth_token');
-            // Optionally notify backend to revoke token: api.post('/logout')
+            localStorage.clear();
         }
     }
 });

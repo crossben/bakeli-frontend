@@ -28,6 +28,13 @@
         </div>
 
         <form @submit.prevent="handleRegister" class="space-y-5">
+          <!-- Error Display -->
+          <div v-if="authStore.error" class="bg-red-50 text-sn-red text-sm p-3 rounded-lg border border-red-100 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            {{ authStore.error }}
+          </div>
           
           <div class="grid grid-cols-2 gap-4">
             <div>
@@ -102,8 +109,12 @@
             </div>
           </div>
 
-          <button type="submit" class="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-sn-green hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sn-green transition-colors">
-            S'inscrire
+          <button type="submit" :disabled="authStore.isLoading" class="w-full flex justify-center items-center gap-2 py-3.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-sn-green hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sn-green transition-colors disabled:opacity-70">
+            <svg v-if="authStore.isLoading" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            {{ authStore.isLoading ? 'Inscription en cours...' : 'S\'inscrire' }}
           </button>
         </form>
 
@@ -120,21 +131,40 @@
 <script setup>
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 const form = reactive({
-    prenom: '',
     nom: '',
+    prenom: '',
     email: '',
     password: '',
     password_confirmation: '',
     terms: false
 })
 
-const handleRegister = () => {
-    // Basic mock navigation for now
-    console.log("Register attempt:", form)
-    // router.push('/dashboard')
+const handleRegister = async () => {
+    if (form.password !== form.password_confirmation) {
+        authStore.error = "Les mots de passe ne correspondent pas.";
+        return;
+    }
+
+    const payload = {
+        name: form.nom, 
+        prenom: form.prenom,
+        email: form.email,
+        password: form.password,
+        password_confirmation: form.password_confirmation
+    }
+
+    const success = await authStore.register(payload);
+    
+    if (success) {
+        // Assume /dashboard will be the protected route eventually
+        console.log("Register success!");
+        // router.push('/dashboard')
+    }
 }
 </script>
