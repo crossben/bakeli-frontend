@@ -12,17 +12,18 @@
         <span class="font-bold text-xl text-gray-900 tracking-tight">Consortium Jeunesse Sénégal</span>
       </div>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex flex-1 justify-center space-x-8 text-gray-600 font-medium">
-        <a href="#fonctionnalites" class="hover:text-sn-green transition-colors">Fonctionnalités</a>
-        <a href="#apropos" class="hover:text-sn-green transition-colors">À propos</a>
-        <a href="#contact" class="hover:text-sn-green transition-colors">Contact</a>
-      </nav>
+      <!-- Desktop Navigation & Auth -->
+      <div class="hidden md:flex flex-1 justify-end items-center gap-8">
+        <nav class="flex space-x-8 text-gray-600 font-medium text-sm md:text-base">
+          <a href="#fonctionnalites" class="hover:text-sn-green transition-colors">Fonctionnalités</a>
+          <a href="#apropos" class="hover:text-sn-green transition-colors">À propos</a>
+          <a href="#contact" class="hover:text-sn-green transition-colors">Contact</a>
+        </nav>
 
-      <!-- Auth Buttons -->
-      <div class="hidden md:flex items-center gap-4 text-sm font-medium">
-        <router-link to="/login" class="text-gray-900 hover:text-sn-green transition-colors">Connexion</router-link>
-        <router-link to="/register" class="bg-sn-green text-white px-5 py-2.5 rounded-md hover:bg-green-700 transition-colors shadow-sm">Inscription</router-link>
+        <div class="flex items-center gap-6 text-sm font-bold">
+          <router-link to="/login" class="text-gray-900 hover:text-sn-green transition-colors">Connexion</router-link>
+          <router-link to="/register" class="bg-sn-green text-white px-6 py-2.5 rounded-md hover:bg-green-700 transition-colors shadow-sm font-medium">Inscription</router-link>
+        </div>
       </div>
 
       <!-- Mobile Menu Button -->
