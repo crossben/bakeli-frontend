@@ -29,6 +29,6 @@ RUN echo "<Directory \"/usr/local/apache2/htdocs\">" >> /usr/local/apache2/conf/
     && echo "AllowOverride All" >> /usr/local/apache2/conf/httpd.conf \
     && echo "</Directory>" >> /usr/local/apache2/conf/httpd.conf
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["httpd-foreground"]
