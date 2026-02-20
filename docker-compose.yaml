@@ -4,5 +4,5 @@ services:
   vue-app:
     build: .
     ports:
-      - "3000"
+      - "5173"
     restart: always

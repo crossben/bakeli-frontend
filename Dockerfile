@@ -29,6 +29,6 @@ RUN sed -i \
 #     && echo "AllowOverride All" >> /usr/local/apache2/conf/httpd.conf \
 #     && echo "</Directory>" >> /usr/local/apache2/conf/httpd.conf
 
-EXPOSE 3000
+EXPOSE 5173
 
 CMD ["httpd-foreground"]

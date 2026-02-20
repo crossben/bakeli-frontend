@@ -151,9 +151,108 @@
           <p class="text-gray-600 text-lg leading-relaxed">
             Nous croyons en la puissance de la jeunesse sénégalaise et nous nous engageons à fournir les outils et les ressources nécessaires pour transformer les ambitions en réalité.
           </p>
+          
+          <ul class="pt-4 space-y-4">
+            <li class="flex items-center gap-3 text-gray-700 font-medium">
+              <div class="w-6 h-6 rounded-full bg-green-100 text-sn-green flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              Plateforme 100% sécurisée et confidentielle
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 font-medium">
+              <div class="w-6 h-6 rounded-full bg-green-100 text-sn-green flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              Interface intuitive et facile à utiliser
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 font-medium">
+              <div class="w-6 h-6 rounded-full bg-green-100 text-sn-green flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              Support technique disponible 24/7
+            </li>
+          </ul>
         </div>
       </section>
+
+      <!-- CTA Section -->
+      <section class="bg-sn-green text-white py-24 px-6 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Prêt à rejoindre le mouvement ?</h2>
+        <p class="text-green-50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+          Inscrivez-vous dès maintenant et commencez votre parcours avec le Consortium Jeunesse Sénégal
+        </p>
+        <button class="bg-white text-sn-green px-8 py-4 rounded-md font-bold hover:bg-green-50 transition-colors inline-flex items-center gap-2 shadow-lg">
+          Créer un compte gratuitement
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#101828] text-gray-300 py-16" id="contact">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-700/50 pb-12 mb-8">
+        
+        <!-- Brand -->
+        <div class="space-y-6">
+          <div class="flex items-center gap-3">
+             <div class="w-8 h-8 flex items-center justify-center text-white font-bold">
+                <span class="text-sn-red text-sm">
+                  <!-- Need a transparent logo or stylized text for footer ideally, falling back to CJS text -->
+                  <span class="text-sn-yellow">
+                    <img src="@/assets/images/logo.png" alt="Logo" class="w-8 h-8">
+                  </span>
+                </span>
+             </div>
+             <span class="font-bold text-xl text-white tracking-tight">CJS</span>
+          </div>
+          <p class="text-sm text-gray-400">
+            Consortium Jeunesse Sénégal - Ensemble pour l'avenir
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <h4 class="text-white font-bold mb-6">Liens rapides</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#fonctionnalites" class="hover:text-sn-yellow transition-colors">Fonctionnalités</a></li>
+            <li><a href="#apropos" class="hover:text-sn-yellow transition-colors">À propos</a></li>
+            <li><a href="#contact" class="hover:text-sn-yellow transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <h4 class="text-white font-bold mb-6">Ressources</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#" class="hover:text-sn-yellow transition-colors">Documentation</a></li>
+            <li><a href="#" class="hover:text-sn-yellow transition-colors">Support</a></li>
+            <li><a href="#" class="hover:text-sn-yellow transition-colors">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="text-white font-bold mb-6">Contact</h4>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li>Dakar, Sénégal</li>
+            <li>contact@cjs.sn</li>
+            <li>+221 33 123 45 67</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center text-sm text-gray-500">
+        © 2026 Consortium Jeunesse Sénégal. Tous droits réservés.
+      </div>
+    </footer>
   </div>
 </template>
 
