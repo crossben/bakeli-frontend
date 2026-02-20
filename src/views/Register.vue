@@ -162,9 +162,11 @@ const handleRegister = async () => {
     const success = await authStore.register(payload);
     
     if (success) {
-        // Assume /dashboard will be the protected route eventually
-        console.log("Register success!");
-        // router.push('/dashboard')
+        if (authStore.user?.role === 'admin') {
+            router.push('/admin');
+        } else {
+            router.push('/connected');
+        }
     }
 }
 </script>

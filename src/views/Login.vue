@@ -109,9 +109,11 @@ const handleLogin = async () => {
     });
     
     if (success) {
-        // Assume /dashboard will be the protected route
-        console.log("Login success! Need to redirect.");
-        // router.push('/dashboard') 
+        if (authStore.user?.role === 'admin') {
+            router.push('/admin');
+        } else {
+            router.push('/connected');
+        }
     }
 }
 </script>
