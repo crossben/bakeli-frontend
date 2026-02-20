@@ -25,9 +25,9 @@ RUN sed -i \
     /usr/local/apache2/conf/httpd.conf
 
 # Allow .htaccess overrides
-RUN echo "<Directory \"/usr/local/apache2/htdocs\">" >> /usr/local/apache2/conf/httpd.conf \
-    && echo "AllowOverride All" >> /usr/local/apache2/conf/httpd.conf \
-    && echo "</Directory>" >> /usr/local/apache2/conf/httpd.conf
+# RUN echo "<Directory \"/usr/local/apache2/htdocs\">" >> /usr/local/apache2/conf/httpd.conf \
+#     && echo "AllowOverride All" >> /usr/local/apache2/conf/httpd.conf \
+#     && echo "</Directory>" >> /usr/local/apache2/conf/httpd.conf
 
 EXPOSE 3000
 
