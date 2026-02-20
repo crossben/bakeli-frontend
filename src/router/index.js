@@ -36,8 +36,13 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     const authStore = useAuthStore();
+
+    // Auto-fetch user if token is present but user data is missing (e.g., page reload)
+    if (authStore.token && !authStore.user) {
+        await authStore.fetchUser();
+    }
 
     if (to.meta.requiresAuth && !authStore.isAuthenticated) {
         return next('/login');

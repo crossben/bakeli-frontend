@@ -80,7 +80,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
             </div>
           </div>
-          <span class="text-3xl font-bold text-gray-900">8</span>
+          <span class="text-3xl font-bold text-gray-900">{{ stats.total }}</span>
         </div>
 
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between h-32">
@@ -90,7 +90,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
             </div>
           </div>
-          <span class="text-3xl font-bold text-gray-900">7</span>
+          <span class="text-3xl font-bold text-gray-900">{{ stats.actifs }}</span>
         </div>
 
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between h-32">
@@ -100,7 +100,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
             </div>
           </div>
-          <span class="text-3xl font-bold text-gray-900">1</span>
+          <span class="text-3xl font-bold text-gray-900">{{ stats.inactifs }}</span>
         </div>
 
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between h-32">
@@ -110,7 +110,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
             </div>
           </div>
-          <span class="text-3xl font-bold text-gray-900">6</span>
+          <span class="text-3xl font-bold text-gray-900">{{ stats.villes }}</span>
         </div>
 
       </div>
@@ -121,21 +121,21 @@
           <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
-          <input type="text" placeholder="Rechercher par nom, email, ville, compétences..." class="block w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-1 focus:ring-sn-green focus:border-sn-green outline-none text-sm text-gray-900 shadow-sm" />
+          <input type="text" v-model="search" placeholder="Rechercher par nom, email, ville, compétences..." class="block w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-1 focus:ring-sn-green focus:border-sn-green outline-none text-sm text-gray-900 shadow-sm" />
         </div>
         
         <div class="flex gap-4">
           <div class="relative">
-            <select class="block w-32 pl-4 pr-10 py-3 bg-white border border-gray-200 rounded-xl appearance-none focus:outline-none focus:ring-1 focus:ring-sn-green text-sm font-medium text-gray-700 shadow-sm">
-              <option>Tous</option>
-              <option>Actifs</option>
-              <option>Inactifs</option>
+            <select v-model="statutFilter" class="block w-32 pl-4 pr-10 py-3 bg-white border border-gray-200 rounded-xl appearance-none focus:outline-none focus:ring-1 focus:ring-sn-green text-sm font-medium text-gray-700 shadow-sm">
+              <option value="">Tous</option>
+              <option value="1">Actifs</option>
+              <option value="0">Inactifs</option>
             </select>
             <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400">
                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
             </div>
           </div>
-          <button class="bg-sn-green text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-green-700 transition-colors shadow-sm text-sm">
+          <button @click="openAddModal" class="bg-sn-green text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-green-700 transition-colors shadow-sm text-sm shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
             Nouveau membre
           </button>
@@ -157,42 +157,80 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-              <!-- Stub Rows for Mockup Alignment -->
-              <tr class="hover:bg-gray-50 transition-colors">
+              <tr v-for="member in members" :key="member.id" class="hover:bg-gray-50 transition-colors">
                 <td class="px-6 py-4 flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-xs">FN</div>
-                  <span class="font-bold text-gray-900">Fatou Ndiaye</span>
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 to-green-500 text-white flex items-center justify-center font-bold text-xs shadow-sm">{{ initials(member) }}</div>
+                  <span class="font-bold text-gray-900">{{ member.prenom }} {{ member.name }}</span>
                 </td>
+                <td class="px-6 py-4 w-64 text-sm">
+                  <div class="text-gray-900 font-medium truncate">{{ member.email }}</div>
+                  <div class="text-gray-500 text-xs mt-1">{{ member.telephone || '-' }}</div>
+                </td>
+                <td class="px-6 py-4 text-gray-900 font-medium whitespace-nowrap">{{ member.ville || '-' }}</td>
                 <td class="px-6 py-4">
-                  <div class="text-gray-900 font-medium">fatou.ndiaye@email.sn</div>
-                  <div class="text-gray-500 text-xs">+221 77 123 45 67</div>
+                    <div class="text-gray-900 text-sm max-w-xs truncate" :title="member.competences">
+                        {{ member.competences || '-' }}
+                    </div>
                 </td>
-                <td class="px-6 py-4 text-gray-900">Dakar</td>
-                <td class="px-6 py-4 text-gray-900">Développement Web, React, Node.js</td>
-                <td class="px-6 py-4">
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Actif</span>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span v-if="member.statut" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800">Actif</span>
+                  <span v-else class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800 border border-red-200">Inactif</span>
                 </td>
-                <td class="px-6 py-4 text-right">
-                   <div class="flex justify-end gap-2 text-gray-400">
-                      <button class="hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg></button>
-                      <button class="hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg></button>
-                      <button class="hover:text-red-500 text-red-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                <td class="px-6 py-4 text-right whitespace-nowrap">
+                   <div class="flex justify-end gap-3 text-gray-400">
+                      <button @click="openDetailsModal(member)" class="hover:text-sn-green transition-colors" title="Voir les détails">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                      </button>
+                      <button @click="openEditModal(member)" class="hover:text-sn-green transition-colors" title="Modifier">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                      </button>
+                      <button @click="deleteMember(member.id)" class="hover:text-red-600 text-red-500 transition-colors" title="Supprimer">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                      </button>
                    </div>
                 </td>
+              </tr>
+              <tr v-if="members.length === 0">
+                  <td colspan="6" class="px-6 py-8 text-center text-gray-500 font-medium">Aucun membre trouvé.</td>
               </tr>
             </tbody>
           </table>
         </div>
+        
+        <!-- Optional Pagination Controls (Basic Draft) -->
+        <div v-if="lastPage > 1" class="p-4 border-t border-gray-100 flex items-center justify-between">
+            <button @click="fetchMembers(currentPage - 1)" :disabled="currentPage === 1" class="px-4 py-2 border rounded-xl text-sm font-medium disabled:opacity-50">Précédent</button>
+            <span class="text-sm text-gray-600">Page {{ currentPage }} sur {{ lastPage }}</span>
+            <button @click="fetchMembers(currentPage + 1)" :disabled="currentPage === lastPage" class="px-4 py-2 border rounded-xl text-sm font-medium disabled:opacity-50">Suivant</button>
+        </div>
       </div>
       
     </main>
+    
+    <!-- Modals -->
+    <ModalMemberForm 
+        :isOpen="isFormModalOpen" 
+        :member="selectedMember" 
+        @close="isFormModalOpen = false" 
+        @saved="handleFormSaved" 
+    />
+    
+    <ModalMemberDetails 
+        :isOpen="isDetailsModalOpen" 
+        :member="selectedMember" 
+        @close="isDetailsModalOpen = false"
+        @edit="handleDetailsEdit"
+    />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
+import api from '../services/api'
+import ModalMemberForm from '../components/ModalMemberForm.vue'
+import ModalMemberDetails from '../components/ModalMemberDetails.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -203,7 +241,103 @@ const userInitials = computed(() => {
 })
 
 const logout = () => {
-    authStore.logout();
-    router.push('/');
+    authStore.logout()
+    router.push('/')
 }
+
+// Data
+const stats = ref({
+    total: 0,
+    actifs: 0,
+    inactifs: 0,
+    villes: 0
+})
+const members = ref([])
+const currentPage = ref(1)
+const lastPage = ref(1)
+
+// Filters
+const search = ref('')
+const statutFilter = ref('') // '' = Tous, 1 = Actif, 0 = Inactif
+
+// Modals State
+const isFormModalOpen = ref(false)
+const isDetailsModalOpen = ref(false)
+const selectedMember = ref(null)
+
+// API Calls
+const fetchStats = async () => {
+    try {
+        const response = await api.get('/stats')
+        stats.value = response.data
+    } catch (error) {
+        console.error("Erreur stats:", error)
+    }
+}
+
+const fetchMembers = async (page = 1) => {
+    try {
+        const params = {
+            page: page,
+            search: search.value || undefined,
+            statut: statutFilter.value === '' ? undefined : statutFilter.value
+        }
+        const response = await api.get('/members', { params })
+        members.value = response.data.data
+        currentPage.value = response.data.current_page
+        lastPage.value = response.data.last_page
+    } catch (error) {
+        console.error("Erreur members:", error)
+    }
+}
+
+// Watchers for filters
+watch([search, statutFilter], () => {
+    fetchMembers(1)
+})
+
+// Modal Actions
+const openAddModal = () => {
+    selectedMember.value = null
+    isFormModalOpen.value = true
+}
+
+const openEditModal = (member) => {
+    selectedMember.value = {...member}
+    isFormModalOpen.value = true
+}
+
+const openDetailsModal = (member) => {
+    selectedMember.value = member
+    isDetailsModalOpen.value = true
+}
+
+const handleDetailsEdit = (member) => {
+    isDetailsModalOpen.value = false
+    openEditModal(member)
+}
+
+const handleFormSaved = () => {
+    fetchStats()
+    fetchMembers(currentPage.value)
+}
+
+const deleteMember = async (id) => {
+    if (!confirm('Êtes-vous sûr de vouloir supprimer ce membre ?')) return;
+    try {
+        await api.delete(`/members/${id}`)
+        handleFormSaved()
+    } catch (error) {
+        console.error("Erreur suppression:", error)
+    }
+}
+
+const initials = (member) => {
+  return `${member.prenom?.charAt(0) || ''}${member.name?.charAt(0) || ''}`.toUpperCase()
+}
+
+onMounted(() => {
+    fetchStats()
+    fetchMembers()
+})
 </script>

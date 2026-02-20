@@ -15,7 +15,7 @@ export const useAuthStore = defineStore('auth', {
             this.error = null;
             try {
                 const response = await api.post('/register', userData);
-                this.token = response.data.token;
+                this.token = response.data.access_token;
                 this.user = response.data.user;
                 this.isAuthenticated = true;
                 localStorage.setItem('auth_token', this.token);
@@ -32,7 +32,7 @@ export const useAuthStore = defineStore('auth', {
             this.error = null;
             try {
                 const response = await api.post('/login', credentials);
-                this.token = response.data.token;
+                this.token = response.data.access_token;
                 this.user = response.data.user;
                 this.isAuthenticated = true;
                 localStorage.setItem('auth_token', this.token);
