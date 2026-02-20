@@ -57,7 +57,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <input type="text" id="nom" v-model="form.nom" placeholder="Diop" class="block w-full pl-11 pr-4 py-3 bg-gray-50 border-transparent rounded-xl focus:border-sn-green focus:ring-1 focus:ring-sn-green focus:bg-white transition-colors text-gray-900 placeholder-gray-400 outline-none" required>
+                <input type="text" id="nom" v-model="form.name" placeholder="Diop" class="block w-full pl-11 pr-4 py-3 bg-gray-50 border-transparent rounded-xl focus:border-sn-green focus:ring-1 focus:ring-sn-green focus:bg-white transition-colors text-gray-900 placeholder-gray-400 outline-none" required>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@ const router = useRouter()
 const authStore = useAuthStore()
 
 const form = reactive({
-    nom: '',
+    name: '',
     prenom: '',
     email: '',
     password: '',
@@ -152,7 +152,7 @@ const handleRegister = async () => {
     }
 
     const payload = {
-        name: form.nom, 
+        name: form.name,
         prenom: form.prenom,
         email: form.email,
         password: form.password,
