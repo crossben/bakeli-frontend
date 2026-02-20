@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia';
 import api from '../services/api';
 
+const storedUser = localStorage.getItem('auth_user');
+
 export const useAuthStore = defineStore('auth', {
     state: () => ({
-        user: null,
+        user: storedUser ? JSON.parse(storedUser) : null,
         token: localStorage.getItem('auth_token') || null,
         isAuthenticated: !!localStorage.getItem('auth_token'),
         error: null,
@@ -19,6 +21,7 @@ export const useAuthStore = defineStore('auth', {
                 this.user = response.data.user;
                 this.isAuthenticated = true;
                 localStorage.setItem('auth_token', this.token);
+                localStorage.setItem('auth_user', JSON.stringify(this.user));
                 return true;
             } catch (err) {
                 this.error = err.response?.data?.message || 'Une erreur est survenue lors de l\'inscription.';
@@ -36,6 +39,7 @@ export const useAuthStore = defineStore('auth', {
                 this.user = response.data.user;
                 this.isAuthenticated = true;
                 localStorage.setItem('auth_token', this.token);
+                localStorage.setItem('auth_user', JSON.stringify(this.user));
                 return true;
             } catch (err) {
                 this.error = err.response?.data?.message || 'Identifiants incorrects.';
@@ -58,7 +62,8 @@ export const useAuthStore = defineStore('auth', {
             this.user = null;
             this.token = null;
             this.isAuthenticated = false;
-            localStorage.clear();
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('auth_user');
         }
     }
 });

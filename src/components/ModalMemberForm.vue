@@ -120,6 +120,19 @@ const form = reactive({
   statut: true
 })
 
+const resetForm = () => {
+    form.id = null
+    form.prenom = ''
+    form.name = ''
+    form.email = ''
+    form.telephone = ''
+    form.ville = ''
+    form.date_naissance = ''
+    form.competences = ''
+    form.statut = true
+    error.value = null
+}
+
 watch(() => props.member, (newVal) => {
   if (newVal) {
     isEdit.value = true
@@ -138,19 +151,6 @@ watch(() => props.member, (newVal) => {
     resetForm()
   }
 }, { immediate: true })
-
-const resetForm = () => {
-    form.id = null
-    form.prenom = ''
-    form.name = ''
-    form.email = ''
-    form.telephone = ''
-    form.ville = ''
-    form.date_naissance = ''
-    form.competences = ''
-    form.statut = true
-    error.value = null
-}
 
 const close = () => {
   emit('close')
