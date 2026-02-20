@@ -84,10 +84,74 @@
         </div>
       </section>
 
-      <!-- Features Section Title (Placeholder) -->
-      <section class="bg-gray-50 py-20 text-center" id="fonctionnalites">
-         <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Fonctionnalités Principales</h2>
-         <p class="text-gray-600 mt-4 text-lg">Tout ce dont vous avez besoin pour gérer efficacement votre consortium</p>
+      <!-- Features Section -->
+      <section class="bg-gray-50 flex-col items-center justify-center py-20 px-6 md:px-12" id="fonctionnalites">
+         <div class="text-center max-w-3xl mx-auto mb-16">
+           <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Fonctionnalités Principales</h2>
+           <p class="text-gray-600 mt-4 text-lg">Tout ce dont vous avez besoin pour gérer efficacement votre consortium</p>
+         </div>
+
+         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+           <!-- Card 1 -->
+           <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+             <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center mb-6 text-sn-green">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+               </svg>
+             </div>
+             <h3 class="text-xl font-bold text-gray-900 mb-3">Gestion des Membres</h3>
+             <p class="text-gray-600 leading-relaxed">
+               Créez, modifiez et gérez facilement les profils des jeunes membres. Suivi complet des compétences et des parcours.
+             </p>
+           </div>
+           
+           <!-- Card 2 -->
+           <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+             <div class="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center mb-6 text-sn-yellow">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+               </svg>
+             </div>
+             <h3 class="text-xl font-bold text-gray-900 mb-3">Suivi & Statistiques</h3>
+             <p class="text-gray-600 leading-relaxed">
+               Tableaux de bord intuitifs avec filtres avancés et recherche pour suivre la progression de vos membres.
+             </p>
+           </div>
+
+           <!-- Card 3 -->
+           <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+             <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 text-sn-red">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+               </svg>
+             </div>
+             <h3 class="text-xl font-bold text-gray-900 mb-3">Développement des Talents</h3>
+             <p class="text-gray-600 leading-relaxed">
+               Programmes de formation, mentorat et opportunités pour développer les compétences des jeunes.
+             </p>
+           </div>
+         </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="max-w-7xl mx-auto px-6 md:px-12 py-20 grid md:grid-cols-2 gap-16 items-center" id="apropos">
+        <div class="relative w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-lg">
+           <div class="absolute inset-0 flex items-center justify-center">
+             <span>
+                <img src="@/assets/images/fille.jpeg" alt="Jeunesse" class="w-full h-full object-cover rounded-3xl" />
+             </span>
+           </div>
+        </div>
+        
+        <div class="space-y-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900">À propos du Consortium</h2>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            Le Consortium Jeunesse Sénégal est une initiative dédiée à l'épanouissement et au développement des compétences des jeunes sénégalais. Notre plateforme digitale facilite la gestion, le suivi et l'accompagnement de nos membres.
+          </p>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            Nous croyons en la puissance de la jeunesse sénégalaise et nous nous engageons à fournir les outils et les ressources nécessaires pour transformer les ambitions en réalité.
+          </p>
+        </div>
       </section>
     </main>
   </div>
