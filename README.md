@@ -63,6 +63,8 @@ bun run dev
 
 L'application sera accessible sur : **<http://localhost:5173>**
 
+https://volkeno.gerexatlas.com/
+
 ---
 
 ## 🔐 Authentification
